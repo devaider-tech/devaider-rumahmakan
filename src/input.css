@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  /* Mendefinisikan Warna Brand Kustom Baru Anda */
+  --color-brand-black: #1F160F; /* Cokelat Tua Aristokrat (Pekat) */
+  --color-brand-gold: #CBA75C;  /* Emas Kuliner Murni */
+  --color-brand-white: #FFFFFF; /* Putih Bersih */
+  --color-brand-brown: #9B8370; /* Cokelat Kulit */
+  --color-brand-pale: #FAF4EC;  /* Krem Pucat Hangat */
+
+  /* Mendefinisikan Font Brand Kustom Baru (Mada & Philosopher) */
+  --font-sans: 'Mada', sans-serif; /* Teks Konten */
+  --font-serif: 'Philosopher', serif; /* Judul Mewah */
+}
+
+.testi-pagination .swiper-pagination-bullet {
+  background-color: var(--color-brand-brown);
+  opacity: 0.4;
+  width: 8px;
+  height: 8px;
+}
+.testi-pagination .swiper-pagination-bullet-active {
+  background-color: var(--color-brand-gold);
+  opacity: 1;
+}

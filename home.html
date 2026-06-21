@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restoran Kuliner Indonesia</title>
+    
+    <!-- File CSS Hasil Build Tailwind v4 Anda -->
+    <link rel="stylesheet" href="dist/output.css">
+    
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Philosopher (Judul) dan Mada (Teks) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mada:wght@300;400;500;600&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Swipper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body class="bg-brand-pale text-slate-800 font-sans"> <!-- [UPDATE] bg-brand-pale -->
+
+    <!-- ================= STICKY HEADER ================= -->
+     <header class="fixed top-0 inset-x-0 z-50 bg-brand-black/30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto grid grid-cols-3 items-center px-6 lg:px-10 py-4">
+
+        <!-- Logo -->
+        <a href="#home" class="flex items-center gap-3 justify-self-start">
+            <!-- TODO: ganti src dengan path logo kamu -->
+            <img src="assets/images/logo header.png" alt="Logo Restauran Kuliner Indonesia" class="w-28 sm:w-36 md:w-44 lg:w-47 h-auto object-contain" />
+            <div class="leading-tight">
+            </div>
+        </a>
+
+        <!-- Nav Desktop -->
+        <nav class="hidden md:flex items-center gap-1 justify-self-center">
+        <a href="home.html" class="nav-link text-sm font-medium px-5 py-2 rounded-full transition-colors text-brand-white hover:text-brand-gold">
+            Home
+        </a>
+        <a href="menu.html" class="nav-link text-sm font-medium px-5 py-2 rounded-full transition-colors text-brand-white hover:text-brand-gold">
+            Menu
+        </a>
+        <a href="about.html" class="nav-link text-sm font-medium px-5 py-2 rounded-full transition-colors text-brand-white hover:text-brand-gold">
+            About
+        </a>
+        <a href="contact.html" class="nav-link text-sm font-medium px-5 py-2 rounded-full transition-colors text-brand-white hover:text-brand-gold">
+            Contact
+        </a>
+        </nav>
+
+        <!-- Tombol menu mobile (fungsi toggle bisa ditambah pakai JS nanti) -->
+        <button 
+        id="mobile-menu-btn"
+        class="md:hidden col-start-3 text-brand-white justify-self-end relative z-10"
+        aria-label="Buka menu"
+        aria-expanded="false"
+        >
+        <!-- Icon hamburger -->
+        <svg id="icon-hamburger" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <!-- Icon close (X), default hidden -->
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        </button>
+        </div>
+
+        <!-- Dropdown Nav Mobile -->
+        <nav
+            id="mobile-menu"
+            class="hidden md:hidden flex-col bg-brand-black/95 backdrop-blur-md px-6 py-4 gap-1"
+        >
+            <a href="#home" class="bg-brand-gold text-brand-black text-sm font-semibold px-5 py-3 rounded-full text-center">Home</a>
+            <a href="#menu" class="text-brand-white text-sm font-medium px-5 py-3 hover:text-brand-gold transition-colors">Menu</a>
+            <a href="#about" class="text-brand-white text-sm font-medium px-5 py-3 hover:text-brand-gold transition-colors">About</a>
+            <a href="#contact" class="text-brand-white text-sm font-medium px-5 py-3 hover:text-brand-gold transition-colors">Contact</a>
+        </nav>
+    </header>
+
+    <!-- ============================================
+        HERO SECTION
+    ============================================ -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+
+        <!-- Background foto -->
+        <!-- TODO: ganti src dengan path foto kamu -->
+        <div
+        class="absolute inset-0 bg-[url('../assets/images/background.png')] bg-cover bg-center"
+        ></div>
+
+        <!-- Overlay gelap supaya teks kontras -->
+        <div class="absolute inset-0 bg-brand-black/70"></div>
+
+        <!-- Konten -->
+        <div class="relative z-10 text-center px-6">
+
+        <!-- Ornamen daun kecil -->
+        <!-- TODO: ganti src dengan path icon kamu -->
+        <img src="assets/images/daun.png" alt="" class="w-20 h-20 mx-auto mb-4 object-contain" />
+
+        <h2 class="font-serif text-2xl md:text-4xl text-brand-white tracking-wide">
+            RESTAURAN KULINER
+        </h2>
+        <h1 class="font-serif text-5xl md:text-8xl font-bold text-brand-gold -mt-1 md:-mt-3">
+            INDONESIA
+        </h1>
+
+        <!-- Divider ornamen -->
+        <img src="assets/images/garis-trimmed.png" alt="" class="w-80 h-20 mx-auto mb-0 object-contain" />
+
+        <p class="font-sans text-sm md:text-base text-brand-white/90 tracking-wide">
+            Buka Setiap Hari: Senin - Minggu
+        </p>
+        </div>
+    </section>
+
+
+    <!-- ============================================
+        MENU SECTION
+    ============================================ -->
+    <section id="menu" class="bg-brand-pale py-20 px-6">
+    <div class="max-w-6xl mx-auto text-center">
+
+        <!-- Label -->
+        <div class="flex items-center justify-center gap-3 mb-3">
+        <span class="h-px w-8 bg-brand-gold"></span>
+        <p class="font-serif text-2xl font-semibold tracking-[0.3em] text-brand-gold uppercase">
+            Menu Kami
+        </p>
+        <span class="h-px w-8 bg-brand-gold"></span>
+        </div>
+
+        <!-- Heading -->
+        <h2 class="font-serif text-4xl md:text-5xl text-brand-black mb-4">
+        Pilihan Terbaik Untukmu
+        </h2>
+        <p class="font-sans text-brand-brown max-w-xl mx-auto mb-0 leading-relaxed">
+        Nikmati berbagai hidangan lezat, minuman segar, kue manis, dan snack
+        favorit pilihan terbaik dari kami untuk setiap selera.
+        </p>
+
+        <!-- Divider kecil -->
+        <img src="assets/images/garis_2-trimmed.png" alt="" class="w-80 h-20 mx-auto mb-0 object-contain" />
+
+        <!-- Grid Card Menu -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+
+        <!-- Card: Makanan -->
+        <div class="bg-brown rounded-2xl shadow-sm overflow-hidden">
+            <img src="assets/images/makanan.png" alt="Makanan" class="w-full h-75 object-cover" />
+            <div class="relative px-6 pt-10 pb-6 text-center">
+            <div class="absolute -top-7 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-brand-gold ring-2 ring-white flex items-center justify-center">
+                <svg class="w-6 h-6 text-brand-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2v8M4 2v4a2 2 0 0 0 4 0V2M8 2v8M8 10v10M16 2c-1 0-2 1-2 3v4c0 1 1 2 2 2s2-1 2-2V5c0-2-1-3-2-3ZM16 13v9" />
+                </svg>
+            </div>
+            <h3 class="font-serif text-xl tracking-wide text-brand-black uppercase">Makanan</h3>
+            <img src="assets/images/garis_2-trimmed.png" alt="" class="w-25 h-6 mx-auto mb-0 object-contain" />
+            <p class="font-sans text-sm text-brand-brown text-center">
+                Aneka hidangan lezat dengan cita rasa terbaik.
+            </p>
+            </div>
+        </div>
+
+        <!-- Card: Minuman -->
+        <div class="bg-brown rounded-2xl shadow-sm overflow-hidden">
+            <img src="assets/images/minuman.png" alt="Minuman" class="w-full h-75 object-cover" />
+            <div class="relative px-6 pt-10 pb-6 text-center">
+            <div class="absolute -top-7 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-brand-gold ring-2 ring-white flex items-center justify-center">
+                <svg class="w-6 h-6 text-brand-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 3h10l-1 16a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2L7 3Z" />
+                <path d="M6 8h12" />
+                </svg>
+            </div>
+            <h3 class="font-serif text-xl tracking-wide text-brand-black uppercase">Minuman</h3>
+            <img src="assets/images/garis_2-trimmed.png" alt="" class="w-25 h-6 mx-auto mb-0 object-contain" />
+            <p class="font-sans text-sm text-brand-brown text-center">
+                Minuman segar dan spesial untuk menemani harimu.
+            </p>
+            </div>
+        </div>
+
+        <!-- Card: Cake -->
+        <div class="bg-brown rounded-2xl shadow-sm overflow-hidden">
+            <img src="assets/images/cake.png" alt="Cake" class="w-full h-75 object-cover" />
+            <div class="relative px-6 pt-10 pb-6 text-center">
+            <div class="absolute -top-7 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-brand-gold ring-2 ring-white flex items-center justify-center">
+                <svg class="w-6 h-6 text-brand-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 18h18M4 18l1-7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2l1 7M12 9V5M9 5a3 3 0 0 1 6 0" />
+                </svg>
+            </div>
+            <h3 class="font-serif text-xl tracking-wide text-brand-black uppercase">Cake</h3>
+            <img src="assets/images/garis_2-trimmed.png" alt="" class="w-25 h-6 mx-auto mb-0 object-contain" />
+            <p class="font-sans text-sm text-brand-brown text-center">
+                Kue manis dengan tampilan menarik dan rasa istimewa.
+            </p>
+            </div>
+        </div>
+
+        <!-- Card: Snack -->
+        <div class="bg-brown rounded-2xl shadow-sm overflow-hidden">
+            <img src="assets/images/snack.png" alt="Snack" class="w-full h-75 object-cover" />
+            <div class="relative px-6 pt-10 pb-6 text-center">
+            <div class="absolute -top-7 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-brand-gold ring-2 ring-white flex items-center justify-center">
+                <svg class="w-6 h-6 text-brand-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 8h14l-1.5 11a2 2 0 0 1-2 1.8H8.5a2 2 0 0 1-2-1.8L5 8Z" />
+                <path d="M3 8h18" />
+                <path d="M9 8 8 4M15 8l1-4" />
+                </svg>
+            </div>
+            <h3 class="font-serif text-xl tracking-wide text-brand-black uppercase">Snack</h3>
+            <img src="assets/images/garis_2-trimmed.png" alt="" class="w-25 h-6 mx-auto mb-0 object-contain" />
+            <p class="font-sans text-sm text-brand-brown text-center">
+                Camilan gurih dan renyah cocok untuk setiap saat.
+            </p>
+            </div>
+        </div>
+
+        </div>
+
+        <!-- CTA Button -->
+        <div class="mt-14">
+        <a
+            href="#menu-lengkap"
+            class="inline-flex items-center gap-2 bg-brand-gold text-brand-white font-sans font-semibold text-xl px-8 py-4 rounded-full hover:opacity-90 transition-opacity"
+        >
+            Lihat Semua Menu
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+        </a>
+        </div>
+
+
+    </div>
+    </section>
+
+
+    <!-- ============================================
+        ABOUT SECTION
+    ============================================ -->
+    <section id="about" class="bg-brand-pale py-20 px-6 border-t border-brand-gold/20">
+    <div class="max-w-6xl mx-auto">
+
+        <!-- Heading -->
+        <div class="text-center mb-14">
+        <div class="flex items-center justify-center gap-3 mb-3">
+            <span class="h-px w-8 bg-brand-gold"></span>
+            <p class="font-serif text-2xl font-semibold tracking-[0.3em] text-brand-gold uppercase">
+            Tentang Kami
+            </p>
+            <span class="h-px w-8 bg-brand-gold"></span>
+        </div>
+        <h2 class="font-serif text-4xl md:text-5xl text-brand-black mb-4">
+            Mengenal Restauran Kuliner
+        </h2>
+        <p class="font-sans text-brand-brown max-w-xl mx-auto leading-relaxed">
+            Kami hadir untuk memberikan pengalaman kuliner terbaik melalui hidangan
+            autentik, pelayanan hangat, dan suasana yang berkesan.
+        </p>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+
+        <!-- Left: Profil / Visi / Misi -->
+        <div class="divide-y divide-brand-gold/20">
+
+            <!-- Profil -->
+            <div class="flex gap-5 pb-6">
+            <div class="shrink-0 w-16 h-16 rounded-full border border-brand-gold flex items-center justify-center">
+                <svg class="w-7 h-7 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 17h18" />
+                <path d="M4 17a8 8 0 0 1 16 0" />
+                <path d="M12 9V7" />
+                <circle cx="12" cy="6" r="1" fill="currentColor" stroke="none" />
+                </svg>
+            </div>
+            <div>
+                <h3 class="font-serif text-xl text-brand-black mb-2">Profil</h3>
+                <p class="font-sans text-sm text-brand-brown leading-relaxed">
+                Kami merupakan tempat kuliner yang menghadirkan berbagai pilihan
+                makanan dan minuman dengan cita rasa terbaik
+                </p>
+            </div>
+            </div>
+
+            <!-- Visi -->
+            <div class="flex gap-5 py-6">
+            <div class="shrink-0 w-16 h-16 rounded-full border border-brand-gold flex items-center justify-center">
+                <svg class="w-7 h-7 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <circle cx="12" cy="12" r="7" />
+                <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" />
+                <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+                </svg>
+            </div>
+            <div>
+                <h3 class="font-serif text-xl text-brand-black mb-2">Visi</h3>
+                <p class="font-sans text-sm text-brand-brown leading-relaxed">
+                Menjadi tempat kuliner favorit yang dikenal karena kualitas rasa,
+                pelayanan terbaik, dan suasana yang nyaman bagi semua pelanggan.
+                </p>
+            </div>
+            </div>
+
+            <!-- Misi -->
+            <div class="flex gap-5 pt-6">
+            <div class="shrink-0 w-16 h-16 rounded-full border border-brand-gold flex items-center justify-center">
+                <svg class="w-7 h-7 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 3v18" />
+                <path d="M5 4h11l-2 3 2 3H5" />
+                </svg>
+            </div>
+            <div>
+                <h3 class="font-serif text-xl text-brand-black mb-2">Misi</h3>
+                <ul class="font-sans text-sm text-brand-brown leading-relaxed space-y-1 list-disc list-outside pl-4">
+                <li>Menyajikan makanan dan minuman berkualitas.</li>
+                <li>Memberikan pelayanan yang ramah dan profesional.</li>
+                <li>Menjaga kebersihan serta kenyamanan tempat.</li>
+                <li>Terus berinovasi menghadirkan menu terbaik.</li>
+                </ul>
+            </div>
+            </div>
+            
+
+        </div>
+
+        <!-- Right: Image -->
+        <div class="rounded-3xl overflow-hidden border-4 border-brand-gold/30 min-h-[320px] lg:min-h-0">
+            <img
+            src="assets/images/profile.png"
+            alt="Tim dapur Restauran Kuliner Indonesia"
+            class="w-full h-full object-cover"
+            />
+        </div>
+
+        </div>
+
+        
+    </div>
+    </section>
+
+
+    <!-- ============================================
+        TESTIMONIALS SECTION
+    ============================================ -->
+    <section id="testimoni" class="bg-brand-pale py-20 px-6 border-t border-brand-gold/20">
+    <div class="max-w-6xl mx-auto">
+
+        <!-- Heading -->
+        <div class="text-center mb-14">
+        <div class="flex items-center justify-center gap-3 mb-3">
+            <span class="h-px w-8 bg-brand-gold"></span>
+            <p class="font-serif text-2xl font-semibold tracking-[0.3em] text-brand-gold uppercase">
+            Testimoni
+            </p>
+            <span class="h-px w-8 bg-brand-gold"></span>
+        </div>
+        <h2 class="font-serif text-4xl md:text-5xl text-brand-black mb-4">
+            Apa Kata Mereka?
+        </h2>
+        <p class="font-sans text-brand-brown max-w-xl mx-auto leading-relaxed">
+            Kepuasan anda adalah prioritas kami. Lihat apa yang pelanggan kami
+            katakan tentang hidangan kami.
+        </p>
+        </div>
+
+        <!-- Swiper Wrapper -->
+        <div class="relative px-15 md:px-21">
+
+        <button
+            class="testi-prev absolute top-1/2 left-2 md:left-4 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-brand-gold z-10 hover:bg-brand-gold hover:text-brand-white transition-colors"
+            aria-label="Sebelumnya"
+        >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+
+        <div class="swiper testimonial-swiper overflow-hidden">
+            <div class="swiper-wrapper">
+
+            <!-- Slide 1 -->
+            <div class="swiper-slide h-auto">
+                <div class="bg-brand-gold rounded-2xl p-8 h-full flex flex-col">
+                <svg class="w-8 h-8 text-brand-white mb-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7 6c-2.5 1.5-4 4-4 7.5C3 16.5 4.8 18 7 18s4-1.5 4-3.7c0-2-1.3-3.3-3-3.3.3-1.7 1.5-3 3-3.7L9 6Zm10 0c-2.5 1.5-4 4-4 7.5 0 3 1.8 4.5 4 4.5s4-1.5 4-3.7c0-2-1.3-3.3-3-3.3.3-1.7 1.5-3 3-3.7L17 6Z" />
+                </svg>
+                <p class="font-serif text-lg text-brand-white mb-6 flex-1">
+                    “Makanannya sangat enak dan pengirimannya cepat”
+                </p>
+                <div class="h-px bg-brand-white/30 mb-6"></div>
+                <div class="flex items-center gap-3">
+                    <img
+                    src="assets/images/pelanggan 1.png"
+                    alt="Andi Saputra"
+                    class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-white/50"
+                    />
+                    <div>
+                    <p class="font-sans font-semibold text-brand-black">Andi Saputra</p>
+                    <p class="font-sans text-sm text-brand-black/70">Pelanggan</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide h-auto">
+                <div class="bg-brand-gold rounded-2xl p-8 h-full flex flex-col">
+                <svg class="w-8 h-8 text-brand-white/40 mb-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7 6c-2.5 1.5-4 4-4 7.5C3 16.5 4.8 18 7 18s4-1.5 4-3.7c0-2-1.3-3.3-3-3.3.3-1.7 1.5-3 3-3.7L9 6Zm10 0c-2.5 1.5-4 4-4 7.5 0 3 1.8 4.5 4 4.5s4-1.5 4-3.7c0-2-1.3-3.3-3-3.3.3-1.7 1.5-3 3-3.7L17 6Z" />
+                </svg>
+                <p class="font-serif text-lg text-brand-white mb-6 flex-1">
+                    “Pelayanan ramah, tempat nyaman, pasti datang lagi!”
+                </p>
+                <div class="h-px bg-brand-white/30 mb-6"></div>
+                <div class="flex items-center gap-3">
+                    <img
+                    src="assets/images/pelanggan 2.png"
+                    alt="Reyhan Syahputra"
+                    class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-white/50"
+                    />
+                    <div>
+                    <p class="font-sans font-semibold text-brand-black">Reyhan Syahputra</p>
+                    <p class="font-sans text-sm text-brand-black/70">Pelanggan</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide h-auto">
+                <div class="bg-brand-gold rounded-2xl p-8 h-full flex flex-col">
+                <svg class="w-8 h-8 text-brand-white/40 mb-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7 6c-2.5 1.5-4 4-4 7.5C3 16.5 4.8 18 7 18s4-1.5 4-3.7c0-2-1.3-3.3-3-3.3.3-1.7 1.5-3 3-3.7L9 6Zm10 0c-2.5 1.5-4 4-4 7.5 0 3 1.8 4.5 4 4.5s4-1.5 4-3.7c0-2-1.3-3.3-3-3.3.3-1.7 1.5-3 3-3.7L17 6Z" />
+                </svg>
+                <p class="font-serif text-lg text-brand-white mb-6 flex-1">
+                    “Menu variatif dan rasanya selalu konsisten. Top!”
+                </p>
+                <div class="h-px bg-brand-white/30 mb-6"></div>
+                <div class="flex items-center gap-3">
+                    <img
+                    src="assets/images/pelanggan 3.png"
+                    alt="Elena Vance"
+                    class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-white/50"
+                    />
+                    <div>
+                    <p class="font-sans font-semibold text-brand-black">Elena Vance</p>
+                    <p class="font-sans text-sm text-brand-black/70">Pelanggan</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="swiper-slide h-auto">
+                <div class="bg-brand-gold rounded-2xl p-8 h-full flex flex-col">
+                <svg class="w-8 h-8 text-brand-white/40 mb-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7 6c-2.5 1.5-4 4-4 7.5C3 16.5 4.8 18 7 18s4-1.5 4-3.7c0-2-1.3-3.3-3-3.3.3-1.7 1.5-3 3-3.7L9 6Zm10 0c-2.5 1.5-4 4-4 7.5 0 3 1.8 4.5 4 4.5s4-1.5 4-3.7c0-2-1.3-3.3-3-3.3.3-1.7 1.5-3 3-3.7L17 6Z" />
+                </svg>
+                <p class="font-serif text-lg text-brand-white mb-6 flex-1">
+                    “Menu variatif dan rasanya selalu konsisten. Top!”
+                </p>
+                <div class="h-px bg-brand-white/30 mb-6"></div>
+                <div class="flex items-center gap-3">
+                    <img
+                    src="assets/images/pelanggan 1.png"
+                    alt="Elena Vance"
+                    class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-white/50"
+                    />
+                    <div>
+                    <p class="font-sans font-semibold text-brand-black">Elena Vance</p>
+                    <p class="font-sans text-sm text-brand-black/70">Pelanggan</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="swiper-slide h-auto">
+                <div class="bg-brand-gold rounded-2xl p-8 h-full flex flex-col">
+                <svg class="w-8 h-8 text-brand-white/40 mb-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7 6c-2.5 1.5-4 4-4 7.5C3 16.5 4.8 18 7 18s4-1.5 4-3.7c0-2-1.3-3.3-3-3.3.3-1.7 1.5-3 3-3.7L9 6Zm10 0c-2.5 1.5-4 4-4 7.5 0 3 1.8 4.5 4 4.5s4-1.5 4-3.7c0-2-1.3-3.3-3-3.3.3-1.7 1.5-3 3-3.7L17 6Z" />
+                </svg>
+                <p class="font-serif text-lg text-brand-white mb-6 flex-1">
+                    “Menu variatif dan rasanya selalu konsisten. Top!”
+                </p>
+                <div class="h-px bg-brand-white/30 mb-6"></div>
+                <div class="flex items-center gap-3">
+                    <img
+                    src="assets/images/pelanggan 2.png"
+                    alt="Elena Vance"
+                    class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-white/50"
+                    />
+                    <div>
+                    <p class="font-sans font-semibold text-brand-black">Elena Vance</p>
+                    <p class="font-sans text-sm text-brand-black/70">Pelanggan</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Slide 6 -->
+            <div class="swiper-slide h-auto">
+                <div class="bg-brand-gold rounded-2xl p-8 h-full flex flex-col">
+                <svg class="w-8 h-8 text-brand-white/40 mb-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7 6c-2.5 1.5-4 4-4 7.5C3 16.5 4.8 18 7 18s4-1.5 4-3.7c0-2-1.3-3.3-3-3.3.3-1.7 1.5-3 3-3.7L9 6Zm10 0c-2.5 1.5-4 4-4 7.5 0 3 1.8 4.5 4 4.5s4-1.5 4-3.7c0-2-1.3-3.3-3-3.3.3-1.7 1.5-3 3-3.7L17 6Z" />
+                </svg>
+                <p class="font-serif text-lg text-brand-white mb-6 flex-1">
+                    “Menu variatif dan rasanya selalu konsisten. Top!”
+                </p>
+                <div class="h-px bg-brand-white/30 mb-6"></div>
+                <div class="flex items-center gap-3">
+                    <img
+                    src="assets/images/pelanggan 3.png"
+                    alt="Elena Vance"
+                    class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-white/50"
+                    />
+                    <div>
+                    <p class="font-sans font-semibold text-brand-black">Elena Vance</p>
+                    <p class="font-sans text-sm text-brand-black/70">Pelanggan</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            
+            </div>
+        </div>
+
+        <button
+            class="testi-next absolute top-1/2 right-2 md:right-4 -translate-y-1/2 w-10 h-10 rounded-full bg-brand-gold shadow-md flex items-center justify-center text-brand-white z-10 hover:opacity-90 transition-opacity"
+            aria-label="Selanjutnya"
+        >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+
+        </div>
+
+        <!-- Pagination -->
+        <div class="testi-pagination flex justify-center gap-2 mt-10"></div>
+
+
+    </div>
+    </section>
+
+
+    <!-- ============================================
+        CONTACT SECTION
+    ============================================ -->
+    <section id="contact" class="bg-brand-pale py-20 pb-15 px-6 border-t border-brand-gold/20">
+    <div class="max-w-6xl mx-auto">
+
+        <!-- Heading -->
+        <div class="text-center mb-14">
+        <div class="flex items-center justify-center gap-3 mb-3">
+            <span class="h-px w-8 bg-brand-gold"></span>
+            <p class="font-serif text-2xl font-semibold tracking-[0.3em] text-brand-gold uppercase">
+            Kontak Kami
+            </p>
+            <span class="h-px w-8 bg-brand-gold"></span>
+        </div>
+        <h2 class="font-serif text-4xl md:text-5xl text-brand-black mb-4">
+            Kami Siap Melayani Anda
+        </h2>
+        <p class="font-sans text-brand-brown max-w-xl mx-auto leading-relaxed">
+            Punya pertanyaan atau ingin melakukan reservasi? Hubungi kami melalui
+            informasi dibawah ini.
+        </p>
+        </div>
+
+        <!-- Grid: Lokasi & Ikuti Kami -->
+        <div class="grid lg:grid-cols-2 gap-8">
+
+        <!-- Card: Lokasi Kami -->
+        <div class="bg-brown rounded-2xl border border-brand-gold p-6">
+            <div class="flex items-center gap-3 pb-4 border-b border-brand-gold/20 mb-5">
+            <div class="w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-brand-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21s-7-7.2-7-12a7 7 0 0 1 14 0c0 4.8-7 12-7 12Z" />
+                <circle cx="12" cy="9" r="2.5" />
+                </svg>
+            </div>
+            <h3 class="font-serif text-xl text-brand-black">Lokasi Kami</h3>
+            </div>
+
+            <div class="w-full h-56 md:h-72 lg:h-90 overflow-hidden mb-5">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.4325078838383!2d112.71068557477405!3d-7.305209492702555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fda9b517bcd1%3A0xaee872d21101bfae!2sRustic%20Market!5e0!3m2!1sid!2sid!4v1781960768346!5m2!1sid!2sid" 
+            class="w-full h-full"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            </div>
+
+            
+            <a href="#"
+            class="inline-flex items-center gap-2 bg-brand-gold text-brand-white font-sans text-sm font-medium px-5 py-3 rounded-full"
+            >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21s-7-7.2-7-12a7 7 0 0 1 14 0c0 4.8-7 12-7 12Z" />
+                <circle cx="12" cy="9" r="2.5" />
+            </svg>
+            Ketintang, Surabaya, Jawa Timur, Indonesia
+            </a>
+        </div>
+
+        <!-- Card: Ikuti Kami -->
+        <div class="bg-brown rounded-2xl border border-brand-gold p-6 pb-4">
+            <div class="flex items-center gap-3 pb-4 border-b border-brand-gold/20 mb-5">
+            <div class="w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-brand-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.79.66 2.65a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.43-1.43a2 2 0 0 1 2.11-.45c.86.32 1.75.54 2.65.66A2 2 0 0 1 22 16.92Z" />
+                </svg>
+            </div>
+            <h3 class="font-serif text-xl text-brand-black">Ikuti Kami</h3>
+            </div>
+
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-5 xl:h-[420px]">
+
+            <!-- Left: Social list + CTA -->
+            <div class="flex flex-col gap-3 h-full">
+
+                <a href="#" class="flex items-center gap-3 border border-brand-gold/30 rounded-xl px-4 py-2.5 hover:border-brand-gold transition-colors">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Zm0 1.8a2.7 2.7 0 1 1 0 5.4 2.7 2.7 0 0 1 0-5.4ZM17.8 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
+                </div>
+                <div class="leading-tight">
+                    <p class="font-sans text-sm font-semibold text-brand-black">Instagram</p>
+                    <p class="font-sans text-xs text-brand-brown">@devaider.tech</p>
+                </div>
+                </a>
+
+                <a href="#" class="flex items-center gap-3 border border-brand-gold/30 rounded-xl px-4 py-2.5 hover:border-brand-gold transition-colors">
+                <div class="w-8 h-8 rounded-full bg-black flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 2c.3 2.2 1.7 3.6 4 3.8v3c-1.4 0-2.7-.4-3.9-1.2v6.4a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.8 2.5V2h2.8Z"/></svg>
+                </div>
+                <div class="leading-tight">
+                    <p class="font-sans text-sm font-semibold text-brand-black">Tiktok</p>
+                    <p class="font-sans text-xs text-brand-brown">@devaider.tech</p>
+                </div>
+                </a>
+
+                <a href="#" class="flex items-center gap-3 border border-brand-gold/30 rounded-xl px-4 py-2.5 hover:border-brand-gold transition-colors">
+                <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.1-.2-1.2-1.6-1.2-3 0-1.4.7-2.1 1-2.4.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.4 0 .6-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.7-.8c.2-.3.4-.2.7-.1l1.7.8c.2.1.4.2.5.3.1.2.1.9-.1 1.6Z"/></svg>
+                </div>
+                <div class="leading-tight">
+                    <p class="font-sans text-sm font-semibold text-brand-black">Whatsapp</p>
+                    <p class="font-sans text-xs text-brand-brown">@devaider.tech</p>
+                </div>
+                </a>
+
+                <a href="#" class="flex items-center gap-3 border border-brand-gold/30 rounded-xl px-4 py-2.5 hover:border-brand-gold transition-colors">
+                <div class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.7 4.6 12 4.6 12 4.6s-5.7 0-7.5.5A3 3 0 0 0 2.4 7.2 31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12a31 31 0 0 0-.4-4.8ZM10 15V9l5.2 3-5.2 3Z"/></svg>
+                </div>
+                <div class="leading-tight">
+                    <p class="font-sans text-sm font-semibold text-brand-black">YouTube</p>
+                    <p class="font-sans text-xs text-brand-brown">@devaider.tech</p>
+                </div>
+                </a>
+
+                
+                <a href="#"
+                class="mt-1 flex items-center justify-between bg-brand-gold rounded-xl px-5 py-3"
+                >
+                <span class="flex items-center gap-3">
+                    <svg class="w-5 h-5 text-brand-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.79.66 2.65a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.43-1.43a2 2 0 0 1 2.11-.45c.86.32 1.75.54 2.65.66A2 2 0 0 1 22 16.92Z" />
+                    </svg>
+                    <span class="leading-tight">
+                    <span class="block font-sans text-sm font-semibold text-brand-white">Hubungi Kami</span>
+                    <span class="block font-sans text-xs text-brand-white/80">Kami siap melayani anda</span>
+                    </span>
+                </span>
+                <svg class="w-4 h-4 text-brand-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+                </a>
+
+            </div>
+
+            <!-- Right: Foto chef -->
+            <div class="hidden xl:block xl:w-full xl:h-full rounded-xl overflow-hidden">
+                <img
+                src="assets/images/head chef_trim.png"
+                alt="Chef Restauran Kuliner Indonesia"
+                class="w-full h-full object-cover object-top"
+                />
+            </div>
+
+            </div>
+        </div>
+
+        </div>
+    </div>
+    </section>
+
+    <!-- ============================================
+        FOOTER
+    ============================================ -->
+    <footer class="bg-brand-black px-6 pt-16 pb-6">
+    <div class="max-w-6xl mx-auto">
+
+        <div class="grid md:grid-cols-3 gap-12 pb-10">
+
+        <!-- Col 1: Brand -->
+        <div>
+            <a href="#home" class="flex items-center gap-0 mb-0 pb-4 border-b border-brand-gold">
+            <img src="assets/images/logo restauran kuliner indonesia.png" alt="Logo Restauran Kuliner Indonesia" class="w-48 sm:w-64 md:w-72 lg:w-100 h-auto object-contain" />
+            </a>
+            <p class="font-sans text-sm text-brand-white/60 leading-relaxed mb-5 mt-3">
+            Menyajikan hidangan terbaik indonesia dengan cita rasa autentik dan
+            bahan berkualitas tinggi untuk pengalaman bersantap yang tak terlupakan.
+            </p>
+            <div class="flex items-center gap-3">
+            <a href="#" class="w-9 h-9 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Zm0 1.8a2.7 2.7 0 1 1 0 5.4 2.7 2.7 0 0 1 0-5.4ZM17.8 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 2c.3 2.2 1.7 3.6 4 3.8v3c-1.4 0-2.7-.4-3.9-1.2v6.4a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.8 2.5V2h2.8Z"/></svg>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.1-.2-1.2-1.6-1.2-3 0-1.4.7-2.1 1-2.4.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.4 0 .6-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.7-.8c.2-.3.4-.2.7-.1l1.7.8c.2.1.4.2.5.3.1.2.1.9-.1 1.6Z"/></svg>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.7 4.6 12 4.6 12 4.6s-5.7 0-7.5.5A3 3 0 0 0 2.4 7.2 31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12a31 31 0 0 0-.4-4.8ZM10 15V9l5.2 3-5.2 3Z"/></svg>
+            </a>
+            </div>
+        </div>
+
+        <!-- Col 2: Our Service -->
+        <div>
+            <h4 class="font-serif text-lg text-brand-gold mt-1 mb-5 tracking-wide uppercase">Our Service</h4>
+            <ul class="space-y-4">
+            <li class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold shrink-0">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.79.66 2.65a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.43-1.43a2 2 0 0 1 2.11-.45c.86.32 1.75.54 2.65.66A2 2 0 0 1 22 16.92Z" /></svg>
+                </span>
+                <span class="font-sans text-sm text-brand-white/70">08123456789</span>
+            </li>
+            <li class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold shrink-0">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
+                </span>
+                <span class="font-sans text-sm text-brand-white/70">restoran.kuliner.id@gmail.com</span>
+            </li>
+            <li class="flex items-start gap-3">
+                <span class="w-8 h-8 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold shrink-0">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-7.2-7-12a7 7 0 0 1 14 0c0 4.8-7 12-7 12Z" /><circle cx="12" cy="9" r="2.5" /></svg>
+                </span>
+                <span class="font-sans text-sm text-brand-white/70">Ketintang, Surabaya,<br />Jawa Timur, Indonesia</span>
+            </li>
+            <li class="flex items-start gap-3">
+                <span class="w-8 h-8 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold shrink-0">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 3" /></svg>
+                </span>
+                <span class="font-sans text-sm text-brand-white/70">Buka Setiap Hari<br />(08.00 - 22.00)</span>
+            </li>
+            </ul>
+        </div>
+
+        <!-- Col 3: Our Menu -->
+        <div>
+            <h4 class="font-serif text-lg text-brand-gold mt-1 mb-5 tracking-wide uppercase">Our Menu</h4>
+            <ul class="space-y-4">
+            <li class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold shrink-0">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2v8M4 2v4a2 2 0 0 0 4 0V2M8 2v8M8 10v10M16 2c-1 0-2 1-2 3v4c0 1 1 2 2 2s2-1 2-2V5c0-2-1-3-2-3ZM16 13v9" />
+                </svg>
+                </span>
+                <a href="#menu" class="font-sans text-sm text-brand-white/70 hover:text-brand-gold transition-colors">Makanan</a>
+            </li>
+            <li class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold shrink-0">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 3h10l-1 16a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2L7 3Z" /><path d="M6 8h12" />
+                </svg>
+                </span>
+                <a href="#menu" class="font-sans text-sm text-brand-white/70 hover:text-brand-gold transition-colors">Minuman</a>
+            </li>
+            <li class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold shrink-0">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 18h18M4 18l1-7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2l1 7M12 9V5M9 5a3 3 0 0 1 6 0" />
+                </svg>
+                </span>
+                <a href="#menu" class="font-sans text-sm text-brand-white/70 hover:text-brand-gold transition-colors">Cake</a>
+            </li>
+            <li class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold shrink-0">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 8h14l-1.5 11a2 2 0 0 1-2 1.8H8.5a2 2 0 0 1-2-1.8L5 8Z" /><path d="M3 8h18" /><path d="M9 8 8 4M15 8l1-4" />
+                </svg>
+                </span>
+                <a href="#menu" class="font-sans text-sm text-brand-white/70 hover:text-brand-gold transition-colors">Snack</a>
+            </li>
+            </ul>
+        </div>
+
+        </div>
+
+        <div class="h-px bg-brand-white/10 mb-6"></div>
+
+        <p class="font-sans text-center text-xs text-brand-white/50">
+        © 2026 Devaider. All Rights Reserved.
+        </p>
+
+    </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+    new Swiper('.testimonial-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        loop: false,
+        grabCursor: true,
+        pagination: {
+        el: '.testi-pagination',
+        clickable: true,
+        },
+        navigation: {
+        nextEl: '.testi-next',
+        prevEl: '.testi-prev',
+        },
+        breakpoints: {
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+        },
+    });
+    </script>
+
+    <script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconHamburger = document.getElementById('icon-hamburger');
+    const iconClose = document.getElementById('icon-close');
+
+    menuBtn.addEventListener('click', () => {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+
+        mobileMenu.classList.toggle('hidden');
+        iconHamburger.classList.toggle('hidden');
+        iconClose.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Auto-close pas salah satu link diklik
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        iconHamburger.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        });
+    });
+    </script>
+
+    <!-- Sorot Navbar -->
+     <script>
+    const currentPage = window.location.pathname.split('/').pop() || 'home.html';
+
+    document.querySelectorAll('.nav-link').forEach((link) => {
+        if (link.getAttribute('href') === currentPage) {
+        link.classList.add('bg-brand-gold', 'text-brand-black', 'font-semibold');
+        link.classList.remove('text-brand-white', 'hover:text-brand-gold');
+        }
+    });
+    </script>
+</body>
