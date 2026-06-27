@@ -67,17 +67,34 @@
         </button>
         </div>
 
-        <!-- Dropdown Nav Mobile -->
-        <nav
-            id="mobile-menu"
-            class="hidden md:hidden flex-col bg-brand-black/95 backdrop-blur-md px-6 py-4 gap-1"
-        >
-            <a href="#index" class="bg-brand-gold text-brand-black text-sm font-semibold px-5 py-3 rounded-full text-center">Home</a>
-            <a href="#menu" class="text-brand-white text-sm font-medium px-5 py-3 hover:text-brand-gold transition-colors">Menu</a>
-            <a href="#about" class="text-brand-white text-sm font-medium px-5 py-3 hover:text-brand-gold transition-colors">About</a>
-            <a href="#contact" class="text-brand-white text-sm font-medium px-5 py-3 hover:text-brand-gold transition-colors">Contact</a>
-        </nav>
     </header>
+
+    <!-- Overlay gelap (klik di luar sidebar = tutup) -->
+        <div
+        id="sidebar-overlay"
+        class="md:hidden fixed inset-0 bg-brand-black/60 z-40 hidden"
+        ></div>
+
+    <aside
+      id="sidebar"
+      class="md:hidden fixed top-0 right-0 h-full w-56 bg-brand-black z-50 flex flex-col px-5 py-6 gap-2 translate-x-full transition-transform duration-300"
+    >
+      <!-- Header sidebar: X di kiri, logo kecil di kanan -->
+      <div class="flex items-center justify-between mb-6">
+        <button id="sidebar-close" class="text-brand-white" aria-label="Tutup menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <img src="assets/images/logo restauran kuliner indonesia.png" alt="Logo" class="w-25 h-10 object-contain" />
+      </div>
+
+      <!-- Link rata kanan -->
+      <a href="index.html" class="mobile-nav-link text-brand-white text-sm font-medium px-4 py-3 rounded-full text-right hover:bg-brand-gold/20 hover:text-brand-gold transition-colors">Home</a>
+      <a href="menu.html" class="mobile-nav-link text-brand-white text-sm font-medium px-4 py-3 rounded-full text-right hover:bg-brand-gold/20 hover:text-brand-gold transition-colors">Menu</a>
+      <a href="about.html" class="mobile-nav-link text-brand-white text-sm font-medium px-4 py-3 rounded-full text-right hover:bg-brand-gold/20 hover:text-brand-gold transition-colors">About</a>
+      <a href="contact.html" class="mobile-nav-link text-brand-white text-sm font-medium px-4 py-3 rounded-full text-right hover:bg-brand-gold/20 hover:text-brand-gold transition-colors">Contact</a>
+    </aside>
 
     <!-- ============================================
         HERO SECTION
@@ -839,39 +856,47 @@
     </script>
 
     <script>
+    // ===== Sidebar Toggle =====
     const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    const sidebarClose = document.getElementById('sidebar-close');
     const iconHamburger = document.getElementById('icon-hamburger');
     const iconClose = document.getElementById('icon-close');
 
-    menuBtn.addEventListener('click', () => {
-        const isOpen = !mobileMenu.classList.contains('hidden');
+    function openSidebar() {
+        sidebar.classList.remove('translate-x-full');
+        overlay.classList.remove('hidden');
+        iconHamburger.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+        menuBtn.setAttribute('aria-expanded', 'true');
+    }
 
-        mobileMenu.classList.toggle('hidden');
-        iconHamburger.classList.toggle('hidden');
-        iconClose.classList.toggle('hidden');
-        menuBtn.setAttribute('aria-expanded', String(!isOpen));
-    });
-
-    // Auto-close pas salah satu link diklik
-    mobileMenu.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
+    function closeSidebar() {
+        sidebar.classList.add('translate-x-full');
+        overlay.classList.add('hidden');
         iconHamburger.classList.remove('hidden');
         iconClose.classList.add('hidden');
         menuBtn.setAttribute('aria-expanded', 'false');
-        });
+    }
+
+    menuBtn.addEventListener('click', openSidebar);
+    sidebarClose.addEventListener('click', closeSidebar);
+    overlay.addEventListener('click', closeSidebar);
+
+    // Auto-close saat link diklik
+    sidebar.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeSidebar);
     });
-    </script>
 
-    <!-- Sorot Navbar -->
-     <script>
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    // ===== Active Nav State (desktop + sidebar) =====
+    const rawPath = window.location.pathname.split('/').pop();
+    const currentPage = rawPath === '' || rawPath === '/' ? 'index.html' : rawPath;
 
-    document.querySelectorAll('.nav-link').forEach((link) => {
+    document.querySelectorAll('.nav-link, .mobile-nav-link').forEach((link) => {
         if (link.getAttribute('href') === currentPage) {
         link.classList.add('bg-brand-gold', 'text-brand-black', 'font-semibold');
-        link.classList.remove('text-brand-white', 'hover:text-brand-gold');
+        link.classList.remove('text-brand-white', 'hover:text-brand-gold', 'hover:bg-brand-gold/20');
         }
     });
     </script>
