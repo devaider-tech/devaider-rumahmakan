@@ -934,6 +934,15 @@
     });
 
     // ===== Active Nav State (desktop + sidebar) =====
+    const pathname = window.location.pathname;
+    let currentPage;
+    if (pathname === '/' || pathname === '' || pathname === '/index.html') {
+        currentPage = 'index.html';
+    } else {
+        const raw = pathname.split('/').pop();
+        currentPage = raw.endsWith('.html') ? raw : raw + '.html';
+    }
+        
     document.querySelectorAll('.nav-link, .mobile-nav-link').forEach((link) => {
         let href = link.getAttribute('href').replace(/^\//, '');
         if (href === '' || href === '/') href = 'index.html'; // handle href="/"
