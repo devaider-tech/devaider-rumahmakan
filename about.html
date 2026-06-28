@@ -125,7 +125,7 @@
     <div class="max-w-6xl mx-auto">
 
         <!-- Content Grid -->
-        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16  items-center mt-10 mb-10">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 lg:items-stretch  items-center mt-10 mb-10">
 
         <!-- Left: Deskripsi Restaurant -->
         <div class="">
@@ -144,7 +144,7 @@
         </div>
 
         <!-- Right: Image -->
-        <div class="rounded-3xl overflow-hidden border-4 border-brand-gold/30 min-h-[320px] lg:min-h-0">
+        <div class="rounded-3xl overflow-hidden border-4 border-brand-gold/30  h-[320px] lg:h-full">
             <img
             src="assets/images/profile.png"
             alt="Tim dapur Restauran Kuliner Indonesia"
@@ -161,7 +161,7 @@
     <!-- ============================================
         SUASANA RESTORAN SECTION
     ============================================ -->
-    <section class="bg-brand-pale py-20 px-6 border-t border-brand-gold/20">
+    <section class="bg-brand-pale py-5 px-6 ">
     <div class="max-w-6xl mx-auto">
 
         <!-- Heading -->
@@ -183,25 +183,25 @@
         </div>
 
         <!-- Gallery Grid -->
-        <div class="grid grid-cols-3 grid-rows-2 gap-4 h-[420px] md:h-[500px] mb-12">
+        <div class="grid grid-cols-2 sm:grid-cols-3 grid-rows-3 sm:grid-rows-2 gap-3 h-auto sm:h-[420px] md:h-[500px] mb-12">
 
-        <div class="col-start-1 row-start-1 rounded-2xl overflow-hidden">
+        <div class="col-start-1 row-start-1 rounded-2xl overflow-hidden h-40 sm:h-auto">
             <img src="assets/images/tempat 1.png" alt="Meja makan candle light" class="w-full h-full object-cover" />
         </div>
 
-        <div class="col-start-2 row-start-1 row-span-2 rounded-2xl overflow-hidden">
+        <div class="col-start-2 row-start-1 sm:row-span-2 rounded-2xl overflow-hidden h-40 sm:h-auto">
             <img src="assets/images/tempat 2.png" alt="Ruang makan utama" class="w-full h-full object-cover" />
         </div>
 
-        <div class="col-start-3 row-start-1 rounded-2xl overflow-hidden">
+        <div class="col-start-1 col-span-2 sm:col-span-1 sm:col-start-3 row-start-2 sm:row-start-1 rounded-2xl overflow-hidden h-40 sm:h-auto">
             <img src="assets/images/tempat 3.png" alt="Area makan dengan lampu gantung" class="w-full h-full object-cover" />
         </div>
 
-        <div class="col-start-1 row-start-2 rounded-2xl overflow-hidden">
+        <div class="col-start-1 row-start-3 sm:row-start-2 rounded-2xl overflow-hidden h-40 sm:h-auto">
             <img src="assets/images/tempat 4.png" alt="Teras outdoor dengan lampu string" class="w-full h-full object-cover" />
         </div>
 
-        <div class="col-start-3 row-start-2 rounded-2xl overflow-hidden">
+        <div class="col-start-2 sm:col-start-3 row-start-3 sm:row-start-2 rounded-2xl overflow-hidden h-40 sm:h-auto">
             <img src="assets/images/tempat 5.png" alt="Area lounge dengan cermin bulat" class="w-full h-full object-cover" />
         </div>
 
@@ -271,7 +271,7 @@
     <!-- ============================================
         TIM KAMI SECTION
     ============================================ -->
-    <section class="bg-brand-pale py-20 px-6 border-t border-brand-gold/20">
+    <section class="bg-brand-pale py-5 px-6 ">
     <div class="max-w-6xl mx-auto">
 
         <!-- Heading -->
@@ -391,7 +391,7 @@
         </div>
 
         <!-- Chef 4 -->
-        <div class="bg-white rounded-2xl overflow-hidden shadow-sm">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm mb-5">
             <div class="relative">
             <img src="assets/images/chef 4.png" alt="Julian Vance" class="w-full h-56 object-cover" />
             
@@ -577,12 +577,15 @@
 
     // ===== Active Nav State (desktop + sidebar) =====
     const rawPath = window.location.pathname.split('/').pop();
-    const currentPage = rawPath === '' || rawPath === '/' ? 'index.html' : rawPath;
+    const currentPage = rawPath === '' || rawPath === '/' || rawPath === 'index.html' 
+        ? 'index.html' 
+        : rawPath.replace('.html', '') + '.html';
 
     document.querySelectorAll('.nav-link, .mobile-nav-link').forEach((link) => {
-        if (link.getAttribute('href') === currentPage) {
-        link.classList.add('bg-brand-gold', 'text-brand-black', 'font-semibold');
-        link.classList.remove('text-brand-white', 'hover:text-brand-gold', 'hover:bg-brand-gold/20');
+        const linkHref = link.getAttribute('href').replace('.html', '') + '.html';
+        if (linkHref === currentPage) {
+            link.classList.add('bg-brand-gold', 'text-brand-black', 'font-semibold');
+            link.classList.remove('text-brand-white', 'hover:text-brand-gold', 'hover:bg-brand-gold/20');
         }
     });
     </script>

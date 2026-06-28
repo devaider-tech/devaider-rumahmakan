@@ -567,12 +567,15 @@
 
     // ===== Active Nav State (desktop + sidebar) =====
     const rawPath = window.location.pathname.split('/').pop();
-    const currentPage = rawPath === '' || rawPath === '/' ? 'index.html' : rawPath;
+    const currentPage = rawPath === '' || rawPath === '/' || rawPath === 'index.html' 
+        ? 'index.html' 
+        : rawPath.replace('.html', '') + '.html';
 
     document.querySelectorAll('.nav-link, .mobile-nav-link').forEach((link) => {
-        if (link.getAttribute('href') === currentPage) {
-        link.classList.add('bg-brand-gold', 'text-brand-black', 'font-semibold');
-        link.classList.remove('text-brand-white', 'hover:text-brand-gold', 'hover:bg-brand-gold/20');
+        const linkHref = link.getAttribute('href').replace('.html', '') + '.html';
+        if (linkHref === currentPage) {
+            link.classList.add('bg-brand-gold', 'text-brand-black', 'font-semibold');
+            link.classList.remove('text-brand-white', 'hover:text-brand-gold', 'hover:bg-brand-gold/20');
         }
     });
     </script>

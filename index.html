@@ -18,6 +18,50 @@
 
     <!-- Swipper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Animasi -->
+     <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        @keyframes rotateFadeIn {
+            from { opacity: 0; transform: rotate(-10deg) scale(0.8); }
+            to   { opacity: 1; transform: rotate(0deg) scale(1); }
+        }
+
+        .anim-daun      { animation: rotateFadeIn 0.8s ease forwards; }
+        .anim-sub       { animation: fadeInUp 0.7s ease 0.3s both; }
+        .anim-heading   { animation: fadeInUp 0.7s ease 0.5s both; }
+        .anim-divider   { animation: fadeIn 0.6s ease 0.8s both; }
+        .anim-text      { animation: fadeInUp 0.6s ease 1s both; }
+
+        /* Scroll animation */
+        .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.from-left {
+        transform: translateX(-40px);
+        }
+        .reveal.from-right {
+        transform: translateX(40px);
+        }
+        .reveal.visible {
+        opacity: 1;
+        transform: translate(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+    </style>
+
 </head>
 <body class="bg-brand-pale text-slate-800 font-sans"> <!-- [UPDATE] bg-brand-pale -->
 
@@ -115,19 +159,19 @@
 
         <!-- Ornamen daun kecil -->
         <!-- TODO: ganti src dengan path icon kamu -->
-        <img src="assets/images/daun.png" alt="" class="w-20 h-20 mx-auto mb-4 object-contain" />
+        <img src="assets/images/daun.png" alt="" class="anim-daun w-20 h-20 mx-auto mb-4 object-contain" />
 
-        <h2 class="font-serif text-2xl md:text-4xl text-brand-white tracking-wide">
+        <h2 class="anim-sub font-serif text-2xl md:text-4xl text-brand-white tracking-wide">
             RESTAURAN KULINER
         </h2>
-        <h1 class="font-serif text-5xl md:text-8xl font-bold text-brand-gold -mt-1 md:-mt-3">
+        <h1 class="anim-heading font-serif text-5xl md:text-8xl font-bold text-brand-gold -mt-1 md:-mt-3">
             INDONESIA
         </h1>
 
         <!-- Divider ornamen -->
-        <img src="assets/images/garis-trimmed.png" alt="" class="w-80 h-20 mx-auto mb-0 object-contain" />
+        <img src="assets/images/garis-trimmed.png" alt="" class="anim-divider w-80 h-20 mx-auto mb-0 object-contain" />
 
-        <p class="font-sans text-sm md:text-base text-brand-white/90 tracking-wide">
+        <p class="anim-text font-sans text-sm md:text-base text-brand-white/90 tracking-wide">
             Buka Setiap Hari: Senin - Minggu
         </p>
         </div>
@@ -137,11 +181,11 @@
     <!-- ============================================
         MENU SECTION
     ============================================ -->
-    <section id="menu" class="bg-brand-pale py-20 px-6">
+    <section id="menu" class="bg-brand-pale py-10 px-6">
     <div class="max-w-6xl mx-auto text-center">
 
         <!-- Label -->
-        <div class="flex items-center justify-center gap-3 mb-3">
+        <div class="flex items-center justify-center gap-3 mb-3 reveal">
         <span class="h-px w-8 bg-brand-gold"></span>
         <p class="font-serif text-2xl font-semibold tracking-[0.3em] text-brand-gold uppercase">
             Menu Kami
@@ -150,7 +194,7 @@
         </div>
 
         <!-- Heading -->
-        <h2 class="font-serif text-4xl md:text-5xl text-brand-black mb-4">
+        <h2 class="font-serif text-4xl md:text-5xl text-brand-black mb-4 reveal">
         Pilihan Terbaik Untukmu
         </h2>
         <p class="font-sans text-brand-brown max-w-xl mx-auto mb-0 leading-relaxed">
@@ -165,7 +209,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
 
         <!-- Card: Makanan -->
-        <div class="bg-brown rounded-2xl shadow-sm overflow-hidden">
+        <div class="bg-brown rounded-2xl shadow-sm overflow-hidden reveal reveal-delay-1">
             <img src="assets/images/makanan.png" alt="Makanan" class="w-full h-75 object-cover" />
             <div class="relative px-6 pt-10 pb-6 text-center">
             <div class="absolute -top-7 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-brand-gold ring-2 ring-white flex items-center justify-center">
@@ -182,7 +226,7 @@
         </div>
 
         <!-- Card: Minuman -->
-        <div class="bg-brown rounded-2xl shadow-sm overflow-hidden">
+        <div class="bg-brown rounded-2xl shadow-sm overflow-hidden reveal reveal-delay-2">
             <img src="assets/images/minuman.png" alt="Minuman" class="w-full h-75 object-cover" />
             <div class="relative px-6 pt-10 pb-6 text-center">
             <div class="absolute -top-7 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-brand-gold ring-2 ring-white flex items-center justify-center">
@@ -200,7 +244,7 @@
         </div>
 
         <!-- Card: Cake -->
-        <div class="bg-brown rounded-2xl shadow-sm overflow-hidden">
+        <div class="bg-brown rounded-2xl shadow-sm overflow-hidden reveal reveal-delay-3">
             <img src="assets/images/cake.png" alt="Cake" class="w-full h-75 object-cover" />
             <div class="relative px-6 pt-10 pb-6 text-center">
             <div class="absolute -top-7 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-brand-gold ring-2 ring-white flex items-center justify-center">
@@ -217,7 +261,7 @@
         </div>
 
         <!-- Card: Snack -->
-        <div class="bg-brown rounded-2xl shadow-sm overflow-hidden">
+        <div class="bg-brown rounded-2xl shadow-sm overflow-hidden reveal reveal-delay-4">
             <img src="assets/images/snack.png" alt="Snack" class="w-full h-75 object-cover" />
             <div class="relative px-6 pt-10 pb-6 text-center">
             <div class="absolute -top-7 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-brand-gold ring-2 ring-white flex items-center justify-center">
@@ -258,7 +302,7 @@
     <!-- ============================================
         ABOUT SECTION
     ============================================ -->
-    <section id="about" class="bg-brand-pale py-20 px-6 border-t border-brand-gold/20">
+    <section id="about" class="bg-brand-pale py-10 px-6 ">
     <div class="max-w-6xl mx-auto">
 
         <!-- Heading -->
@@ -283,7 +327,7 @@
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
 
         <!-- Left: Profil / Visi / Misi -->
-        <div class="divide-y divide-brand-gold/20">
+        <div class="divide-y divide-brand-gold/20 reveal from-left">
 
             <!-- Profil -->
             <div class="flex gap-5 pb-6">
@@ -345,7 +389,7 @@
         </div>
 
         <!-- Right: Image -->
-        <div class="rounded-3xl overflow-hidden border-4 border-brand-gold/30 min-h-[320px] lg:min-h-0">
+        <div class="rounded-3xl overflow-hidden border-4 border-brand-gold/30 min-h-[320px] lg:min-h-0 reveal from-right">
             <img
             src="assets/images/profile.png"
             alt="Tim dapur Restauran Kuliner Indonesia"
@@ -363,11 +407,11 @@
     <!-- ============================================
         TESTIMONIALS SECTION
     ============================================ -->
-    <section id="testimoni" class="bg-brand-pale py-20 px-6 border-t border-brand-gold/20">
+    <section id="testimoni" class="bg-brand-pale py-10 px-6 ">
     <div class="max-w-6xl mx-auto">
 
         <!-- Heading -->
-        <div class="text-center mb-14">
+        <div class="text-center mb-14 reveal">
         <div class="flex items-center justify-center gap-3 mb-3">
             <span class="h-px w-8 bg-brand-gold"></span>
             <p class="font-serif text-2xl font-semibold tracking-[0.3em] text-brand-gold uppercase">
@@ -385,7 +429,7 @@
         </div>
 
         <!-- Swiper Wrapper -->
-        <div class="relative px-15 md:px-21">
+        <div class="relative px-15 md:px-21 reveal">
 
         <button
             class="testi-prev absolute top-1/2 left-2 md:left-4 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-brand-gold z-10 hover:bg-brand-gold hover:text-brand-white transition-colors"
@@ -569,11 +613,11 @@
     <!-- ============================================
         CONTACT SECTION
     ============================================ -->
-    <section id="contact" class="bg-brand-pale py-20 pb-15 px-6 border-t border-brand-gold/20">
+    <section id="contact" class="bg-brand-pale py-10 pb-15 px-6 ">
     <div class="max-w-6xl mx-auto">
 
         <!-- Heading -->
-        <div class="text-center mb-14">
+        <div class="text-center mb-14 reveal">
         <div class="flex items-center justify-center gap-3 mb-3">
             <span class="h-px w-8 bg-brand-gold"></span>
             <p class="font-serif text-2xl font-semibold tracking-[0.3em] text-brand-gold uppercase">
@@ -594,7 +638,7 @@
         <div class="grid lg:grid-cols-2 gap-8">
 
         <!-- Card: Lokasi Kami -->
-        <div class="bg-brown rounded-2xl border border-brand-gold p-6">
+        <div class="bg-brown rounded-2xl border border-brand-gold p-6 reveal from-left">
             <div class="flex items-center gap-3 pb-4 border-b border-brand-gold/20 mb-5">
             <div class="w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center shrink-0">
                 <svg class="w-5 h-5 text-brand-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -628,7 +672,7 @@
         </div>
 
         <!-- Card: Ikuti Kami -->
-        <div class="bg-brown rounded-2xl border border-brand-gold p-6 pb-4">
+        <div class="bg-brown rounded-2xl border border-brand-gold p-6 pb-4 reveal from-right">
             <div class="flex items-center gap-3 pb-4 border-b border-brand-gold/20 mb-5">
             <div class="w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center shrink-0">
                 <svg class="w-5 h-5 text-brand-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -891,13 +935,28 @@
 
     // ===== Active Nav State (desktop + sidebar) =====
     const rawPath = window.location.pathname.split('/').pop();
-    const currentPage = rawPath === '' || rawPath === '/' ? 'index.html' : rawPath;
+    const currentPage = rawPath === '' || rawPath === '/' || rawPath === 'index.html' 
+        ? 'index.html' 
+        : rawPath.replace('.html', '') + '.html';
 
     document.querySelectorAll('.nav-link, .mobile-nav-link').forEach((link) => {
-        if (link.getAttribute('href') === currentPage) {
-        link.classList.add('bg-brand-gold', 'text-brand-black', 'font-semibold');
-        link.classList.remove('text-brand-white', 'hover:text-brand-gold', 'hover:bg-brand-gold/20');
+        const linkHref = link.getAttribute('href').replace('.html', '') + '.html';
+        if (linkHref === currentPage) {
+            link.classList.add('bg-brand-gold', 'text-brand-black', 'font-semibold');
+            link.classList.remove('text-brand-white', 'hover:text-brand-gold', 'hover:bg-brand-gold/20');
         }
     });
+    </script>
+
+    <script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
