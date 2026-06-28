@@ -934,18 +934,9 @@
     });
 
     // ===== Active Nav State (desktop + sidebar) =====
-    const pathname = window.location.pathname;
-    let currentPage;
-
-    if (pathname === '/' || pathname === '/index.html' || pathname === '') {
-        currentPage = 'index.html';
-    } else {
-        const raw = pathname.split('/').pop();
-        currentPage = raw.endsWith('.html') ? raw : raw + '.html';
-    }
-
     document.querySelectorAll('.nav-link, .mobile-nav-link').forEach((link) => {
-        const href = link.getAttribute('href').replace(/^\//, '');
+        let href = link.getAttribute('href').replace(/^\//, '');
+        if (href === '' || href === '/') href = 'index.html'; // handle href="/"
         const normalized = href.endsWith('.html') ? href : href + '.html';
         if (normalized === currentPage) {
             link.classList.add('bg-brand-gold', 'text-brand-black', 'font-semibold');
