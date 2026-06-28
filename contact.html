@@ -397,13 +397,16 @@
 
     // ===== Active Nav State (desktop + sidebar) =====
     const rawPath = window.location.pathname.split('/').pop();
-    const currentPage = rawPath === '' || rawPath === '/' || rawPath === 'index.html' 
+
+    // Normalize: "menu" → "menu.html", "" atau "/" → "index.html", "menu.html" → "menu.html"
+    const currentPage = (rawPath === '' || rawPath === '/') 
         ? 'index.html' 
-        : rawPath.replace('.html', '') + '.html';
+        : rawPath.endsWith('.html') ? rawPath : rawPath + '.html';
 
     document.querySelectorAll('.nav-link, .mobile-nav-link').forEach((link) => {
-        const linkHref = link.getAttribute('href').replace('.html', '') + '.html';
-        if (linkHref === currentPage) {
+        const linkHref = link.getAttribute('href');
+        const normalizedHref = linkHref.endsWith('.html') ? linkHref : linkHref + '.html';
+        if (normalizedHref === currentPage) {
             link.classList.add('bg-brand-gold', 'text-brand-black', 'font-semibold');
             link.classList.remove('text-brand-white', 'hover:text-brand-gold', 'hover:bg-brand-gold/20');
         }
