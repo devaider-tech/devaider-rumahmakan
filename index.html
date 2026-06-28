@@ -70,7 +70,7 @@
         <div class="max-w-7xl mx-auto grid grid-cols-3 items-center px-6 lg:px-10 py-4">
 
         <!-- Logo -->
-        <a href="#index" class="flex items-center gap-3 justify-self-start">
+        <a href="index.html" class="flex items-center gap-3 justify-self-start">
             <!-- TODO: ganti src dengan path logo kamu -->
             <img src="assets/images/logo header.png" alt="Logo Restauran Kuliner Indonesia" class="w-28 sm:w-36 md:w-44 lg:w-47 h-auto object-contain" />
             <div class="leading-tight">
@@ -935,6 +935,9 @@
 
     // ===== Active Nav State (desktop + sidebar) =====
     const rawPath = window.location.pathname.split('/').pop();
+    console.log('rawPath:', JSON.stringify(rawPath));
+    console.log('currentPage akan jadi:', rawPath === '' || rawPath === '/' ? 'index.html' : rawPath);
+    
 
     const currentPage = (rawPath === '' || rawPath === '/') 
         ? 'index.html' 
